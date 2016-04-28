@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   has_many :documents
   attr_accessor :image_base
   attr_accessor :document_data
-  # before_validation :parse_image
+   before_validation :parse_image
 
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment :picture, presence: true
