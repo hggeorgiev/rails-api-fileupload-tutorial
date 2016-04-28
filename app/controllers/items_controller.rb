@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      item.save_attachments(item_params) if params[:item][:documents]
+      @item.save_attachments(item_params) if params[:item][:document_data]
       render :show, status: :created, location: @item
     else
       render json: @item.errors, status: :unprocessable_entity
@@ -49,6 +49,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description , :documents, :image_base)
+      params.require(:item).permit(:name, :description , :picture, :document_data => [])
     end
 end
