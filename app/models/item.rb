@@ -18,6 +18,7 @@ class Item < ApplicationRecord
 
   private
   def parse_image
+    p image_base
     image = Paperclip.io_adapters.for(image_base)
     image.original_filename = "image.jpg"
     self.picture = image
