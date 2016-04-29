@@ -18,9 +18,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      params[:item][:document_data].each do |file|
-          @item.documents.create!(:document => file)
-      end
       render :show, status: :created, location: @item
     else
       render json: @item.errors, status: :unprocessable_entity
@@ -51,6 +48,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :picture, document_data: [])
+      params.require(:item).permit(:name, :description, :picture)
     end
 end
