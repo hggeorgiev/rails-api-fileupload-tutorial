@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160429000701) do
     t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "file"
+    t.string   "document"
     t.index ["item_id"], name: "index_documents_on_item_id"
   end
 
